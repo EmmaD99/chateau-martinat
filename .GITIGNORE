@@ -1,0 +1,55 @@
+# ========================================
+# .gitignore pour Château Martinat
+# ========================================
+
+# Fichiers système
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Éditeurs
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+*.swp
+*.swo
+*~
+
+# Logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Dossiers de dépendances (si vous utilisez npm/yarn plus tard)
+node_modules/
+bower_components/
+
+# Fichiers temporaires
+*.tmp
+*.temp
+.cache/
+
+# Images de backup
+*.backup
+images/backup/
+
+# Fichiers de compilation
+dist/
+build/
+
+# Fichiers de configuration d'environnement
+.env
+.env.local
+.env.*.local
+
+# Fichiers MacOS
+.AppleDouble
+.LSOverride
+Icon
+._*
+
+# Fichiers Windows
+ehthumbs.db
+ehthumbs_vista.db

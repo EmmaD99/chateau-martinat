@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Château Martinat - Notre propriété, notre équipe et notre vignoble en Côtes de Bourg">
+  <title>Propriété | Château Martinat</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="../css/reset.css">
+  <link rel="stylesheet" href="../css/variables.css">
+  <link rel="stylesheet" href="../css/main.css">
+  <link rel="stylesheet" href="../css/components/header.css">
+  <link rel="stylesheet" href="../css/components/menu.css">
+  <link rel="stylesheet" href="../css/components/footer.css">
+  
+  <style>
+    /* Styles spécifiques pour la page propriété */
+    
+    /* Back Button */
+    .back-btn {
+      width: 40px;
+      height: 40px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: var(--accent);
+      border-radius: var(--radius-sm);
+      transition: all var(--transition-normal);
+      text-decoration: none;
+    }
+
+    .back-btn:hover {
+      background: var(--accent-light);
+      transform: translateX(-3px);
+    }
+
+    .back-arrow {
+      color: white;
+      font-size: var(--font-size-xl);
+      font-weight: bold;
+      line-height: 1;
+    }
+    
+    /* Hero Section */
+    .property-hero {
+      position: relative;
+      height: 60vh;
+      min-height: 400px;
+      background: linear-gradient(var(--overlay), var(--overlay)),
+                  url('../images/general/vignes.jpg') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      margin-top: var(--header-height);
+    }
+
+    .property-hero h1 {
+      font-size: clamp(2.5rem, 6vw, 3.5rem);
+      color: white;
+      text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
+      letter-spacing: 2px;
+    }
+
+    /* Section commune */
+    .property-section {
+      padding: var(--spacing-3xl) 0;
+    }
+
+    .property-section:nth-child(even) {
+      background: var(--background-dark);
+    }
+
+    /* Notre Équipe */
+    .team-intro-section {
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: var(--spacing-2xl);
+      align-items: start;
+      margin-bottom: var(--spacing-3xl);
+    }
+
+    .team-text {
+      line-height: 1.8;
+      font-size: var(--font-size-md);
+    }
+
+    /* Team Photos Grid */
+    .team-photos-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+    }
+
+    .team-photo-card {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-normal);
+    }
+
+    .team-photo-card:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .team-photo-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .team-photo-card:hover img {
+      transform: scale(1.08);
+    }
+
+    .team-photo-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.85), transparent);
+      padding: var(--spacing-sm) var(--spacing-md);
+      color: white;
+    }
+
+    .team-photo-name {
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      margin-bottom: 2px;
+      line-height: 1.3;
+    }
+
+    .team-photo-role {
+      font-size: var(--font-size-xs);
+      opacity: 0.9;
+      line-height: 1.2;
+    }
+
+    /* Carousel Container */
+    .carousel-container {
+      position: relative;
+      max-width: 100%;
+      margin: var(--spacing-2xl) auto 0;
+      background: white;
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .carousel-wrapper {
+      position: relative;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .carousel-track {
+      display: flex;
+      transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .carousel-slide {
+      min-width: 100%;
+      position: relative;
+    }
+
+    .carousel-slide img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .carousel-caption {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+      color: white;
+      padding: var(--spacing-xl) var(--spacing-lg);
+      text-align: center;
+    }
+
+    .carousel-caption h3 {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .carousel-caption p {
+      font-size: var(--font-size-sm);
+      opacity: 0.9;
+    }
+
+    /* Carousel Controls */
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(255, 255, 255, 0.9);
+      border: none;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-xl);
+      color: var(--primary);
+      transition: all var(--transition-fast);
+      z-index: 10;
+      box-shadow: var(--shadow-md);
+    }
+
+    .carousel-btn:hover {
+      background: white;
+      transform: translateY(-50%) scale(1.1);
+    }
+
+    .carousel-btn-prev {
+      left: var(--spacing-lg);
+    }
+
+    .carousel-btn-next {
+      right: var(--spacing-lg);
+    }
+
+    /* Carousel Indicators */
+    .carousel-indicators {
+      position: absolute;
+      bottom: var(--spacing-lg);
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: var(--spacing-sm);
+      z-index: 10;
+    }
+
+    .carousel-indicator {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.5);
+      border: none;
+      cursor: pointer;
+      transition: all var(--transition-fast);
+      padding: 0;
+    }
+
+    .carousel-indicator.active {
+      background: white;
+      width: 30px;
+      border-radius: 6px;
+    }
+
+    /* Notre Vignoble */
+    .vineyard-content {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr;
+      gap: var(--spacing-3xl);
+      align-items: center;
+      margin-top: var(--spacing-xl);
+    }
+
+    .vineyard-stats {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-xl);
+    }
+
+    .stat-item {
+      background: white;
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-md);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .stat-number {
+      font-size: var(--font-size-2xl);
+      font-weight: 700;
+      color: var(--accent);
+      font-family: var(--font-primary);
+    }
+
+    .stat-label {
+      color: var(--text-gray);
+      margin-top: var(--spacing-xs);
+      font-size: var(--font-size-sm);
+    }
+
+    /* Philosophie */
+    .philosophy-content {
+      max-width: 900px;
+      margin: var(--spacing-xl) auto 0;
+      text-align: center;
+    }
+
+    .philosophy-content p {
+      margin-bottom: var(--spacing-lg);
+      line-height: 1.8;
+      font-size: var(--font-size-md);
+    }
+
+    .philosophy-highlight {
+      background: white;
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-md);
+      border-left: 4px solid var(--accent);
+      margin: var(--spacing-xl) 0;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .philosophy-highlight strong {
+      color: var(--accent);
+      font-size: var(--font-size-lg);
+      display: block;
+      margin-bottom: var(--spacing-sm);
+    }
+
+    /* Notre Chai */
+    .cellar-content {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: var(--spacing-3xl);
+      align-items: center;
+      margin-top: var(--spacing-xl);
+    }
+
+    /* Découvrir notre région */
+    .region-content {
+      max-width: 1000px;
+      margin: var(--spacing-xl) auto 0;
+    }
+
+    .region-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+      margin-top: var(--spacing-xl);
+    }
+
+    .region-card {
+      background: white;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: all var(--transition-normal);
+    }
+
+    .region-card:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .region-image {
+      height: 200px;
+      background: var(--background-dark);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: var(--font-size-3xl);
+    }
+
+    .region-info {
+      padding: var(--spacing-lg);
+    }
+
+    .region-info h3 {
+      color: var(--primary);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .region-info p {
+      color: var(--text-gray);
+      font-size: var(--font-size-sm);
+      line-height: 1.6;
+    }
+
+    /* Contact Section */
+    .contact-section {
+      background: var(--background-light);
+    }
+
+    .contact-content {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: var(--spacing-3xl);
+      margin-top: var(--spacing-xl);
+    }
+
+    .contact-info {
+      padding: var(--spacing-lg);
+    }
+
+    .contact-details {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-xl);
+    }
+
+    .contact-item h3 {
+      font-size: var(--font-size-md);
+      color: var(--accent);
+      margin-bottom: var(--spacing-xs);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .contact-item p {
+      color: var(--text-dark);
+      line-height: 1.8;
+      margin: 0;
+    }
+
+    .contact-item a {
+      color: var(--accent);
+      font-weight: 600;
+      transition: color var(--transition-fast);
+    }
+
+    .contact-item a:hover {
+      color: var(--accent-light);
+      text-decoration: underline;
+    }
+
+    .btn-primary {
+      display: inline-block;
+      padding: var(--spacing-md) var(--spacing-xl);
+      background: var(--accent);
+      color: var(--text-light);
+      border-radius: var(--radius-sm);
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      transition: all var(--transition-normal);
+      box-shadow: var(--shadow-sm);
+      margin-top: var(--spacing-lg);
+      text-align: center;
+    }
+
+    .btn-primary:hover {
+      background: var(--accent-light);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+      color: var(--text-light);
+    }
+
+    .contact-map {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+      height: 100%;
+      min-height: 500px;
+    }
+
+    .contact-map iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Image commune */
+    .section-image {
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-md);
+    }
+
+    .section-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform var(--transition-slow);
+    }
+
+    .section-image:hover img {
+      transform: scale(1.05);
+    }
+
+    /* Responsive */
+    @media (max-width: 968px) {
+      .team-intro-section,
+      .vineyard-content,
+      .cellar-content,
+      .contact-content {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-xl);
+      }
+
+      .region-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .vineyard-stats {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .carousel-slide img {
+        height: 400px;
+      }
+
+      .carousel-btn {
+        width: 40px;
+        height: 40px;
+        font-size: var(--font-size-lg);
+      }
+
+      .carousel-btn-prev {
+        left: var(--spacing-md);
+      }
+
+      .carousel-btn-next {
+        right: var(--spacing-md);
+      }
+    }
+
+    @media (max-width: 768px) {
+      .property-hero {
+        height: 50vh;
+        min-height: 300px;
+      }
+
+      .property-section {
+        padding: var(--spacing-2xl) 0;
+      }
+
+      .region-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .vineyard-stats {
+        grid-template-columns: 1fr;
+      }
+
+      .team-photos-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-map {
+        min-height: 350px;
+      }
+
+      .carousel-slide img {
+        height: 300px;
+      }
+
+      .carousel-btn {
+        width: 36px;
+        height: 36px;
+      }
+
+      .back-btn {
+        width: 36px;
+        height: 36px;
+      }
+
+      .back-arrow {
+        font-size: var(--font-size-lg);
+      }
+    }
+
+    @media (max-width: 480px) {
+      .carousel-caption h3 {
+        font-size: var(--font-size-lg);
+      }
+
+      .carousel-slide img {
+        height: 250px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="topbar">
+  <a href="../index.html" class="back-btn" aria-label="Retour à l'accueil">
+    <span class="back-arrow">←</span>
+  </a>
+  <div class="logo">
+    <a href="../index.html" style="color: inherit; text-decoration: none;">Château Martinat</a>
+  </div>
+</header>
+
+<main>
+
+  <!-- HERO -->
+  <section class="property-hero">
+    <h1>Notre Propriété</h1>
+  </section>
+
+  <!-- NOTRE ÉQUIPE -->
+  <section id="equipe" class="property-section">
+    <div class="container">
+      <h2 class="section-title">Notre Équipe</h2>
+      
+      <!-- Team Intro with Photos -->
+      <div class="team-intro-section">
+        <div class="team-text">
+          <p>
+            Deux collaborateurs font partie du « Martinat team » : Cyrille Baillou et Sophie Baraillé. 
+            Chaque année, nous faisons également appel à une petite équipe pour les travaux de la vigne et notamment pour les vendanges.
+          </p>
+          <p style="margin-top: var(--spacing-md);">
+            Notre équipe passionnée met son savoir-faire au service de la qualité de nos vins, 
+            dans le respect des traditions viticoles et de notre terroir exceptionnel.
+          </p>
+        </div>
+
+        <!-- Team Photos Grid (2x2) -->
+        <div class="team-photos-grid">
+          <div class="team-photo-card">
+            <img src="../images/workers/lucie-donze.jpg" alt="Famille Marsaux-Donze" loading="lazy">
+            <div class="team-photo-overlay">
+              <div class="team-photo-name">Lucie Donzee</div>
+              <div class="team-photo-role">Propriétaires</div>
+            </div>
+          </div>
+
+          <div class="team-photo-card">
+            <img src="../images/workers/stephane-donze.jpg" alt="Cyrille Baillou" loading="lazy">
+            <div class="team-photo-overlay">
+              <div class="team-photo-name">Stéphane Donze</div>
+              <div class="team-photo-role">Propriétaires</div>
+            </div>
+          </div>
+
+          <div class="team-photo-card">
+            <img src="../images/workers/sophie-baraillé.jpg" alt="Sophie Baraillé" loading="lazy">
+            <div class="team-photo-overlay">
+              <div class="team-photo-name">Sophie Baraillé</div>
+              <div class="team-photo-role">Maitre de Chai</div>
+            </div>
+          </div>
+
+          <div class="team-photo-card">
+            <img src="../images/workers/cyrille-baillou.jpg" alt="Équipe Saisonnière" loading="lazy">
+            <div class="team-photo-overlay">
+              <div class="team-photo-name">Cyrille Baillou</div>
+              <div class="team-photo-role">Maitre de Chai</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Carousel -->
+      <div class="carousel-container">
+        <div class="carousel-wrapper">
+          <div class="carousel-track" id="carouselTrack">
+            <div class="carousel-slide">
+              <img src="../images/general/vignes.jpg" alt="Vue d'ensemble du vignoble" loading="lazy">
+              <div class="carousel-caption">
+                <h3>Notre Vignoble</h3>
+                <p>18 hectares de vignes sur un terroir d'exception</p>
+              </div>
+            </div>
+            
+            <div class="carousel-slide">
+              <img src="../images/general/barrique.jpg" alt="Cave de vieillissement" loading="lazy">
+              <div class="carousel-caption">
+                <h3>Notre Chai</h3>
+                <p>Élevage traditionnel en barriques de chêne français</p>
+              </div>
+            </div>
+            
+            <div class="carousel-slide">
+              <img src="../images/general/maison.jpg" alt="Château Martinat" loading="lazy">
+              <div class="carousel-caption">
+                <h3>Château Martinat</h3>
+                <p>Une propriété familiale depuis plusieurs générations</p>
+              </div>
+            </div>
+            
+            <div class="carousel-slide">
+              <img src="../images/general/vignes.jpg" alt="Travail de la vigne" loading="lazy">
+              <div class="carousel-caption">
+                <h3>Viticulture Raisonnée</h3>
+                <p>Certification HVE - Haute Valeur Environnementale</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Controls -->
+        <button class="carousel-btn carousel-btn-prev" id="prevBtn" aria-label="Slide précédent">‹</button>
+        <button class="carousel-btn carousel-btn-next" id="nextBtn" aria-label="Slide suivant">›</button>
+
+        <!-- Indicators -->
+        <div class="carousel-indicators" id="carouselIndicators"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTRE VIGNOBLE -->
+  <section id="vignoble" class="property-section">
+    <div class="container">
+      <h2 class="section-title">Les Vignes</h2>
+      
+      <div class="vineyard-content">
+        <div>
+          <p style="line-height: 1.8; font-size: var(--font-size-md); margin-bottom: var(--spacing-md);">
+            Château MARTINAT regroupe 10 hectares au centre de l'appellation Côtes de Bourg : 
+            sur un terroir particulier, caractérisé par la présence de veines de petites graves et d'argiles rouges et brunes; 
+            un atout qualitatif précieux pour la maturité de nos raisins et la densité de nos vins. L'âge des vignes est de 40 ans en moyenne. 
+            L'encépagement est à dominante Merlot 70%, Cabernet sauvignon 15 % et 15 % de Malbec.
+            Nous essayons à tout moment de respecter notre terroir. Nous tenons aussi à continuer l'ébourgeonnage, 
+            les vendanges en vert, l'effeuillage et les vendanges manuelles.
+          </p>
+        </div>
+
+        <div class="section-image">
+          <img src="../images/general/vignes.jpg" alt="Vignoble Château Martinat" loading="lazy">
+        </div>
+      </div>
+
+      <div class="vineyard-stats">
+        <div class="stat-item">
+          <div class="stat-number">10 hectares</div>
+          <div class="stat-label">au centre de l'appellation Côtes de Bourg </div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-number">40 ans en moyenne</div>
+          <div class="stat-label">L'âge des vignes</div>
+        </div>
+        
+        <div class="stat-item">
+          <div class="stat-number">Merlot 70%, Cabernet sauvignon 15 % et 15 % de Malbec</div>
+          <div class="stat-label">Encépagement est à dominante</div>
+        </div>
+      
+      </div>
+    </div>
+  </section>
+
+  <!-- PHILOSOPHIE -->
+  <section id="philosophie" class="property-section">
+    <div class="container">
+      <h2 class="section-title">Philosophie</h2>
+      
+      <div class="philosophy-content">
+        
+        <div class="philosophy-highlight">
+          <strong>Château Martinat</strong>
+          <p style="margin: 0; line-height: 1.6;">
+            Apprendre le métier… Comprendre les cycles de la vigne. 
+            Raisonner la tenue du vignoble, s’adapter aux caprices du ciel ! Se remettre en question… 
+            et puis Vendanger avec cœur et raison, vinifier avec minutie et ambition ! 
+            Et enfin patienter avec humilité pour que les vins soient fins et gourmands. NOUS VOUS SOUHAITONS DE TRES BONNES DEGUSTATIONS
+          </p>
+          <p>Lucie et Stéphane</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- NOTRE CHAI -->
+  <section id="chai" class="property-section">
+    <div class="container">
+      <h2 class="section-title">Notre Chai</h2>
+      
+      <div class="cellar-content">
+        <div class="section-image">
+          <img src="../images/general/barrique.jpg" alt="Chai Château Martinat" loading="lazy">
+        </div>
+
+        <div>
+          <p style="line-height: 1.8; font-size: var(--font-size-md); margin-bottom: var(--spacing-lg);">
+            Adossé à la maison, le cuvier orienté plein nord dispose d’une belle installation : 
+            une cuverie béton, époxyée et thermo régulée de différentes capacités. 
+            Un premier chai à barriques abrite avec bienveillance les fûts neufs d’Epicurea (élevage de 18 mois avec fermentation malolactique en barrique). 
+            Le chai à barriques « Martinat » rassemble 250 fûts, l’élevage des vins s’accomplit généralement sur 14 mois selon le millésime. 
+            Les différents lots sont élevés séparément jusqu’à l’assemblage final… Une dégustation des différents lots est faite régulièrement afin d’affiner l’élevage : 
+            trouver le « bon et le juste » équilibre entre le vin et son boisé.
+          </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- DÉCOUVRIR NOTRE RÉGION -->
+  <section id="region" class="property-section">
+    <div class="container">
+      <h2 class="section-title">Découvrir notre Région</h2>
+      
+      <div class="region-content">
+        <p style="text-align: center; margin-bottom: var(--spacing-xl); line-height: 1.8; font-size: var(--font-size-md); max-width: 800px; margin-left: auto; margin-right: auto;">
+          Le vignoble de Château Martinat est situé sur la commune de LANSAC, 
+          au cœur de l’appellation Côtes de Bourg, dans un paysage vallonné non loin du fleuve: 
+          la Gironde. Cette dernière a une influence certaine sur la douceur du climat et l’ensoleillement de cette région . 
+        </p>
+        <p style="text-align: center; margin-bottom: var(--spacing-xl); line-height: 1.8; font-size: var(--font-size-md); max-width: 800px; margin-left: auto; margin-right: auto;">
+          Château MARTINAT regroupe 10 hectares sur un terroir particulier, 
+          caractérisé par la présence de veines de petites graves et d’argiles rouges et brunes; 
+          un atout qualitatif précieux pour la maturité de nos raisins et la densité de nos vins. 
+          L’âge des vignes est de 40 ans en moyenne, l’encépagement est à dominante Merlot 70% Cabernet sauvignon 20 % et 10 %de Malbec (cépage historique). 
+        </p>
+
+        <div class="region-grid">
+          <div class="region-card">
+            <div class="region-image">🏰</div>
+            <div class="region-info">
+              <h3>Citadelle de Bourg</h3>
+              <p>
+                Monument historique surplombant l'estuaire, offrant une vue panoramique 
+                exceptionnelle sur la Gironde et ses environs.
+              </p>
+            </div>
+          </div>
+
+          <div class="region-card">
+            <div class="region-image">🍷</div>
+            <div class="region-info">
+              <h3>Route des Vins</h3>
+              <p>
+                Parcourez la Route des Châteaux et découvrez les domaines viticoles 
+                de l'appellation Côtes de Bourg.
+              </p>
+            </div>
+          </div>
+
+          <div class="region-card">
+            <div class="region-image">🚣</div>
+            <div class="region-info">
+              <h3>Estuaire de la Gironde</h3>
+              <p>
+                Le plus grand estuaire d'Europe, idéal pour les balades en bateau 
+                et l'observation de la nature.
+              </p>
+            </div>
+          </div>
+
+          <div class="region-card">
+            <div class="region-image">🏛️</div>
+            <div class="region-info">
+              <h3>Bordeaux</h3>
+              <p>
+                À 45 minutes, découvrez la capitale mondiale du vin, classée au 
+                patrimoine UNESCO pour son architecture.
+              </p>
+            </div>
+          </div>
+
+          <div class="region-card">
+            <div class="region-image">🌊</div>
+            <div class="region-info">
+              <h3>Côte Atlantique</h3>
+              <p>
+                Les plages de l'Atlantique sont à moins d'une heure, parfaites pour 
+                une escapade en bord de mer.
+              </p>
+            </div>
+          </div>
+
+          <div class="region-card">
+            <div class="region-image">🍴</div>
+            <div class="region-info">
+              <h3>Gastronomie locale</h3>
+              <p>
+                Savourez les spécialités bordelaises : lamproie, entrecôte, cannelés 
+                et bien sûr, les huîtres d'Arcachon.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="contact-section">
+    <div class="container">
+      <h2 class="section-title">Nous Contacter</h2>
+      
+      <div class="contact-content">
+        <div class="contact-info">
+          <div class="contact-details">
+            <div class="contact-item">
+              <h3>Adresse</h3>
+              <p>
+                Château Martinat<br>
+                Lansac<br>
+                33710 Côtes de Bourg<br>
+                France
+              </p>
+            </div>
+            
+            <div class="contact-item">
+              <h3>Email</h3>
+              <p><a href="mailto:contact@chateaumartinat.fr">contact@chateaumartinat.fr</a></p>
+            </div>
+            
+            <div class="contact-item">
+              <h3>Téléphone</h3>
+              <p><a href="tel:+33557683498">+33 (0)5 57 68 34 98</a></p>
+            </div>
+            
+            <div class="contact-item">
+              <h3>Coordonnées GPS</h3>
+              <p>45.063121, -0.549345</p>
+            </div>
+
+            <div class="contact-item">
+              <h3>Horaires de visite</h3>
+              <p>
+                Lundi - Samedi : 9h - 18h<br>
+                Sur rendez-vous uniquement
+              </p>
+            </div>
+          </div>
+
+          <a href="mailto:contact@chateaumartinat.fr?subject=Demande de tarifs" class="btn-primary">
+            Demander nos tarifs
+          </a>
+        </div>
+        
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.170246967585!2d-0.5515331847682614!3d45.063120979098756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48002b926c5fc42f%3A0xce54150184a7dcd4!2sSCEV%20Marsaux%20Donze%20%2F%20Ch%C3%A2teau%20Martinat!5e0!3m2!1sfr!2sfr!4v1706946912345!5m2!1sfr!2sfr"
+            width="100%" 
+            height="100%" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localisation du Château Martinat">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2024 Château Martinat — Tous droits réservés</p>
+      <p class="footer-legal">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="../js/main.js"></script>
+
+<!-- Carousel Script -->
+<script>
+  // Carousel functionality
+  (function() {
+    const track = document.getElementById('carouselTrack');
+    const prevBtn = document.getElementById('prevBtn');
+    const nextBtn = document.getElementById('nextBtn');
+    const indicatorsContainer = document.getElementById('carouselIndicators');
+    const slides = document.querySelectorAll('.carousel-slide');
+    
+    let currentIndex = 0;
+    const totalSlides = slides.length;
+    let autoplayInterval;
+
+    // Create indicators
+    slides.forEach((_, index) => {
+      const indicator = document.createElement('button');
+      indicator.classList.add('carousel-indicator');
+      indicator.setAttribute('aria-label', `Aller au slide ${index + 1}`);
+      if (index === 0) indicator.classList.add('active');
+      indicator.addEventListener('click', () => goToSlide(index));
+      indicatorsContainer.appendChild(indicator);
+    });
+
+    const indicators = document.querySelectorAll('.carousel-indicator');
+
+    function updateCarousel() {
+      const offset = -currentIndex * 100;
+      track.style.transform = `translateX(${offset}%)`;
+      
+      // Update indicators
+      indicators.forEach((indicator, index) => {
+        indicator.classList.toggle('active', index === currentIndex);
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = index;
+      updateCarousel();
+      resetAutoplay();
+    }
+
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel();
+    }
+
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateCarousel();
+    }
+
+    function startAutoplay() {
+      autoplayInterval = setInterval(nextSlide, 8000);
+    }
+
+    function stopAutoplay() {
+      clearInterval(autoplayInterval);
+    }
+
+    function resetAutoplay() {
+      stopAutoplay();
+      startAutoplay();
+    }
+
+    // Event listeners
+    nextBtn.addEventListener('click', () => {
+      nextSlide();
+      resetAutoplay();
+    });
+
+    prevBtn.addEventListener('click', () => {
+      prevSlide();
+      resetAutoplay();
+    });
+
+    // Pause on hover
+    const carouselContainer = document.querySelector('.carousel-container');
+    carouselContainer.addEventListener('mouseenter', stopAutoplay);
+    carouselContainer.addEventListener('mouseleave', startAutoplay);
+
+    // Touch events for mobile
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    carouselContainer.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+      stopAutoplay();
+    });
+
+    carouselContainer.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      handleSwipe();
+      startAutoplay();
+    });
+
+    function handleSwipe() {
+      if (touchEndX < touchStartX - 50) nextSlide();
+      if (touchEndX > touchStartX + 50) prevSlide();
+    }
+
+    // Keyboard navigation
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') {
+        prevSlide();
+        resetAutoplay();
+      }
+      if (e.key === 'ArrowRight') {
+        nextSlide();
+        resetAutoplay();
+      }
+    });
+
+    // Start autoplay
+    startAutoplay();
+  })();
+</script>
+</body>
+</html>

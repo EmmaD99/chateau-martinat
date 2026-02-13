@@ -1,0 +1,110 @@
+/* ========================================
+   WINES SECTION
+   ======================================== */
+
+.wines-section {
+  background: var(--background-bordeaux);
+}
+
+.wines-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: var(--spacing-xl);
+  margin-top: var(--spacing-xl);
+}
+
+.wine-card {
+  background: white;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all var(--transition-normal);
+}
+
+.wine-card:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+}
+
+.wine-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
+.wine-figure {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3/4;
+  background: var(--background-dark);
+}
+
+.wine-figure img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  padding: var(--spacing-md);
+  transition: transform var(--transition-slow);
+}
+
+.wine-card:hover .wine-figure img {
+  transform: scale(1.05);
+}
+
+.wine-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+  padding: var(--spacing-lg);
+  transform: translateY(100%);
+  transition: transform var(--transition-normal);
+}
+
+.wine-card:hover .wine-overlay {
+  transform: translateY(0);
+}
+
+.wine-cta {
+  color: white;
+  font-weight: 600;
+  font-size: var(--font-size-sm);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+}
+
+.wine-cta::after {
+  content: '→';
+  font-size: var(--font-size-lg);
+}
+
+.wine-name {
+  padding: var(--spacing-md);
+  font-family: var(--font-primary);
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--primary);
+  text-align: center;
+  background: white;
+}
+
+@media (max-width: 768px) {
+  .wines-grid {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: var(--spacing-md);
+  }
+  
+  .wine-name {
+    font-size: var(--font-size-md);
+  }
+}
+
+@media (max-width: 480px) {
+  .wines-grid {
+    grid-template-columns: 1fr;
+  }
+}

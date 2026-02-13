@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Château Martinat - Vignerons indépendants en Côtes de Bourg">
+  <title>Château Martinat | Vignerons en Côtes de Bourg</title>
+  
+  <!-- Styles -->
+  <link rel="stylesheet" href="css/reset.css">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/main.css">
+  <link rel="stylesheet" href="css/components/header.css">
+  <link rel="stylesheet" href="css/components/menu.css">
+  <link rel="stylesheet" href="css/components/hero.css">
+  <link rel="stylesheet" href="css/components/age-verification.css">
+  <link rel="stylesheet" href="css/sections/wines.css">
+  <link rel="stylesheet" href="css/sections/property.css">
+  <link rel="stylesheet" href="css/sections/news.css">
+  <link rel="stylesheet" href="css/sections/gift.css">
+  <link rel="stylesheet" href="css/sections/contact.css">
+  <link rel="stylesheet" href="css/components/footer.css">
+</head>
+<body>
+
+<!-- POP-UP VERIFICATION D'ÂGE -->
+<div id="age-verification-popup" class="age-verification-overlay" role="dialog" aria-modal="true" aria-labelledby="age-verification-title">
+  <div class="popup-content">
+    <h2 id="age-verification-title">Êtes-vous âgé(e) de 18 ans ou plus ?</h2>
+    <p class="popup-subtitle">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+    <div class="buttons">
+      <button id="verify-button-yes" class="btn-verify btn-yes">Oui, j'ai 18 ans ou plus</button>
+      <button id="verify-button-no" class="btn-verify btn-no">Non</button>
+    </div>
+  </div>
+</div>
+
+<!-- HEADER -->
+<header class="topbar">
+  <button class="menu-btn" id="openMenu" aria-controls="menu" aria-expanded="false" aria-label="Ouvrir le menu">
+    <span class="hamburger-icon">
+      <span></span>
+      <span></span>
+      <span></span>
+    </span>
+  </button>
+  <div class="logo">Château Martinat</div>
+</header>
+
+<!-- MENU OVERLAY -->
+<nav class="menu-overlay" id="menu" aria-hidden="true">
+  <button class="close-btn" id="closeMenu" aria-label="Fermer le menu">×</button>
+  <ul class="menu-links">
+    <li><a href="#accueil">Accueil</a></li>
+    <li><a href="#vins">Nos Vins</a></li>
+    <li><a href="#propriete">Propriété</a></li>
+    <li><a href="#actualites">Actualités et Presse</a></li>
+    <li><a href="#bon-cadeau">Bon Cadeau</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="accueil" class="hero reveal">
+    <div class="hero-overlay">
+      <h1>Château Martinat</h1>
+      <p class="hero-subtitle">Vignerons indépendants en Côtes de Bourg</p>
+      <a href="#vins" class="btn-hero">Découvrir nos vins</a>
+    </div>
+  </section>
+
+  <!-- NOS VINS -->
+  <section id="vins" class="section wines-section reveal">
+    <div class="container">
+      <h2 class="section-title">Nos Vins</h2>
+      <p class="section-intro">Découvrez notre collection de vins d'exception, fruits d'un terroir unique et d'un savoir-faire transmis de génération en génération.</p>
+      
+      <div class="wines-grid">
+        <article class="wine-card">
+          <a href="pages/martinat.html" class="wine-link">
+            <figure class="wine-figure">
+              <img src="images/wines/martinat-etiquette.jpg" alt="Château Martinat - Étiquette" loading="lazy">
+              <div class="wine-overlay">
+                <span class="wine-cta">Voir la fiche technique</span>
+              </div>
+            </figure>
+            <figcaption class="wine-name">Château Martinat</figcaption>
+          </a>
+        </article>
+        
+        <article class="wine-card">
+          <a href="pages/donats.html" class="wine-link">
+            <figure class="wine-figure">
+              <img src="images/wines/donats-etiquette.jpg" alt="Donats - Étiquette" loading="lazy">
+              <div class="wine-overlay">
+                <span class="wine-cta">Voir la fiche technique</span>
+              </div>
+            </figure>
+            <figcaption class="wine-name">Donats</figcaption>
+          </a>
+        </article>
+        
+        <article class="wine-card">
+          <a href="pages/epicurea.html" class="wine-link">
+            <figure class="wine-figure">
+              <img src="images/wines/epicurea-etiquette.jpg" alt="Epicurea - Étiquette" loading="lazy">
+              <div class="wine-overlay">
+                <span class="wine-cta">Voir la fiche technique</span>
+              </div>
+            </figure>
+            <figcaption class="wine-name">Epicurea</figcaption>
+          </a>
+        </article>
+        
+        <article class="wine-card">
+          <a href="pages/rose.html" class="wine-link">
+            <figure class="wine-figure">
+              <img src="images/wines/rose-etiquette.jpg" alt="Rosé - Étiquette" loading="lazy">
+              <div class="wine-overlay">
+                <span class="wine-cta">Voir la fiche technique</span>
+              </div>
+            </figure>
+            <figcaption class="wine-name">Rosé</figcaption>
+          </a>
+        </article>
+        
+        <article class="wine-card">
+          <a href="pages/blanc.html" class="wine-link">
+            <figure class="wine-figure">
+              <img src="images/wines/blanc-etiquette.jpg" alt="Blanc - Étiquette" loading="lazy">
+              <div class="wine-overlay">
+                <span class="wine-cta">Voir la fiche technique</span>
+              </div>
+            </figure>
+            <figcaption class="wine-name">Blanc</figcaption>
+          </a>
+        </article>
+        
+        <article class="wine-card">
+          <a href="pages/malbec.html" class="wine-link">
+            <figure class="wine-figure">
+              <img src="images/wines/malbec-etiquette.jpg" alt="Malbec - Étiquette" loading="lazy">
+              <div class="wine-overlay">
+                <span class="wine-cta">Voir la fiche technique</span>
+              </div>
+            </figure>
+            <figcaption class="wine-name">Belair l'Escudier</figcaption>
+          </a>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROPRIÉTÉ -->
+  <section id="propriete" class="section property-section reveal">
+    <div class="container">
+      <div class="property-content">
+        <div class="property-text">
+          <h2 class="section-title">Propriété</h2>
+          <div class="property-description">
+            <p>
+              Le vignoble de Château Martinat est situé sur la commune de Lansac,
+              au cœur de l'appellation Côtes de Bourg, dans un paysage vallonné
+              à proximité du fleuve de la Gironde. Cette situation géographique
+              confère au domaine un climat tempéré et un ensoleillement favorable.
+            </p>
+            <p>
+              Reprise en 1994 avec l'ambition de révéler tout le potentiel de son
+              terroir, la propriété est aujourd'hui certifiée <strong>HVE</strong>
+              (Haute Valeur Environnementale).
+            </p>
+          </div>
+          <a href="pages/propriete.html" class="btn-primary">En savoir plus sur le domaine</a>
+        </div>
+        <div class="property-image">
+          <img src="images/general/martinat.jpg" alt="Vue du domaine Château Martinat" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ACTUALITÉS ET PRESSE -->
+  <section id="actualites" class="section news-section reveal">
+    <div class="container">
+      <h2 class="section-title">Actualités et Presse</h2>
+      <div class="news-content">
+        <div class="news-text">
+          <p>
+            Retrouvez ici toutes les dernières nouvelles du Château Martinat, nos participations aux salons, récompenses et articles dans la presse spécialisée.
+          </p>
+          <p>
+            Chaque événement et chaque parution témoigne de la passion que nous mettons dans nos vins.
+          </p>
+          <p class="news-contact">
+            Pour plus d'informations, vous pouvez <a href="#contact">nous contacter</a>.
+          </p>
+        </div>
+        <div class="news-image">
+          <img src="images/general/presse.jpg" alt="Actualités et presse Château Martinat" loading="lazy">
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BON CADEAU -->
+  <section id="bon-cadeau" class="section gift-section reveal">
+    <div class="container">
+      <h2 class="section-title">Bon Cadeau</h2>
+      <p class="section-intro">Offrez une expérience unique au Château Martinat</p>
+      
+      <div class="gift-grid">
+        <article class="gift-card">
+          <figure class="gift-figure">
+            <img src="images/general/bon-cadeau-1.jpg" alt="Bon cadeau dégustation au château" loading="lazy">
+            <figcaption class="gift-title">Dégustation au Château</figcaption>
+          </figure>
+          <p class="gift-description">Découvrez nos vins lors d'une dégustation commentée dans nos chais</p>
+        </article>
+        
+        <article class="gift-card">
+          <figure class="gift-figure">
+            <img src="images/general/bon-cadeau-2.jpg" alt="Bon cadeau visite du vignoble" loading="lazy">
+            <figcaption class="gift-title">Visite du vignoble</figcaption>
+          </figure>
+          <p class="gift-description">Parcourez nos vignes et découvrez notre terroir d'exception</p>
+        </article>
+        
+        <article class="gift-card">
+          <figure class="gift-figure">
+            <img src="images/general/bon-cadeau-3.jpg" alt="Bon cadeau coffret vin" loading="lazy">
+            <figcaption class="gift-title">Coffret de vin</figcaption>
+          </figure>
+          <p class="gift-description">Une sélection de nos meilleurs crus dans un écrin élégant</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="section contact-section reveal">
+    <div class="container">
+      <div class="contact-content">
+        <div class="contact-info">
+          <h2 class="section-title">Contact</h2>
+          
+          <div class="contact-details">
+            <div class="contact-item">
+              <h3>Adresse</h3>
+              <p>
+                Château Martinat<br>
+                Lansac<br>
+                33710 Côtes de Bourg<br>
+                France
+              </p>
+            </div>
+            
+            <div class="contact-item">
+              <h3>Email</h3>
+              <p><a href="mailto:contact@chateaumartinat.fr">contact@chateaumartinat.fr</a></p>
+            </div>
+            
+            <div class="contact-item">
+              <h3>Téléphone</h3>
+              <p><a href="tel:+33557683498">+33 (0)5 57 68 34 98</a></p>
+            </div>
+            
+            <div class="contact-item">
+              <h3>Coordonnées GPS</h3>
+              <p>45.063121, -0.549345</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="contact-map">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3271.170246967585!2d-0.5515331847682614!3d45.063120979098756!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x48002b926c5fc42f%3A0xce54150184a7dcd4!2sSCEV%20Marsaux%20Donze%20%2F%20Ch%C3%A2teau%20Martinat!5e0!3m2!1sfr!2sfr!4v1706946912345!5m2!1sfr!2sfr"
+            width="100%" 
+            height="400" 
+            style="border:0;" 
+            allowfullscreen="" 
+            loading="lazy" 
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Localisation du Château Martinat">
+          </iframe>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2024 Château Martinat – Tous droits réservés</p>
+      <p class="footer-legal">L'abus d'alcool est dangereux pour la santé. À consommer avec modération.</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Scripts -->
+<script src="js/main.js"></script>
+</body>
+</html>
