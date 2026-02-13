@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Malbec - Notre cuvée prestige au Malbec du Château Martinat">
-  <title>Cuvée Grand Cru | Château Martinat</title>
+  <title>Malbec | Château Martinat</title>
   
   <!-- Styles -->
   <link rel="stylesheet" href="../css/reset.css">
@@ -14,8 +14,6 @@
   <link rel="stylesheet" href="../css/components/footer.css">
   
   <style>
-    /* Styles spécifiques pour les pages vins */
-    
     /* Back Button */
     .back-btn {
       width: 40px;
@@ -41,7 +39,7 @@
       line-height: 1;
     }
     
-    /* Wine Page Layout */
+    /* Layout */
     .wine-page {
       min-height: 100vh;
       display: flex;
@@ -57,7 +55,7 @@
       width: 100%;
     }
 
-    /* Wine Header */
+    /* Header */
     .wine-header {
       text-align: center;
       margin-bottom: var(--spacing-3xl);
@@ -80,7 +78,7 @@
       letter-spacing: 2px;
     }
 
-    /* Wine Content */
+    /* Content */
     .wine-content {
       display: grid;
       grid-template-columns: 1fr 1.2fr;
@@ -90,7 +88,6 @@
       animation: fadeInUp 0.8s ease 0.2s backwards;
     }
 
-    /* Wine Image */
     .wine-image-container {
       position: sticky;
       top: calc(var(--header-height) + var(--spacing-lg));
@@ -115,15 +112,11 @@
     }
 
     @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(-10px);
-      }
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
     }
 
-    /* Wine Description */
+    /* Description */
     .wine-description {
       background: white;
       padding: var(--spacing-xl);
@@ -131,13 +124,26 @@
       box-shadow: var(--shadow-md);
     }
 
+    .wine-title-wrapper {
+      border-bottom: 3px solid var(--accent);
+      padding-bottom: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+    }
+
     .wine-description h2 {
       font-family: var(--font-primary);
       font-size: var(--font-size-xl);
       color: var(--primary);
-      margin-bottom: var(--spacing-lg);
-      padding-bottom: var(--spacing-sm);
-      border-bottom: 3px solid var(--accent);
+      margin: 0;
+      line-height: 1.15;
+    }
+
+    .wine-appellation {
+      font-size: 0.85rem;
+      font-style: italic;
+      letter-spacing: 0.5px;
+      color: rgba(0, 0, 0, 0.65);
+      margin: 2px 0 0 0;
     }
 
     .wine-description p {
@@ -151,7 +157,7 @@
       margin-bottom: 0;
     }
 
-    /* Wine Actions */
+    /* Buttons */
     .wine-actions {
       display: flex;
       gap: var(--spacing-lg);
@@ -198,66 +204,28 @@
       background: var(--primary);
     }
 
-    /* Animations */
     @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
+      from { opacity: 0; transform: translateY(30px); }
+      to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Responsive */
     @media (max-width: 968px) {
-      .wine-content {
-        grid-template-columns: 1fr;
-        gap: var(--spacing-xl);
-      }
-
-      .wine-image-container {
-        position: relative;
-        top: 0;
-        max-width: 400px;
-        margin: 0 auto;
-      }
+      .wine-content { grid-template-columns: 1fr; gap: var(--spacing-xl); }
+      .wine-image-container { position: relative; top: 0; max-width: 400px; margin: 0 auto; }
     }
 
     @media (max-width: 768px) {
-      .wine-container {
-        padding: var(--spacing-2xl) var(--spacing-md);
-      }
-
-      .wine-header {
-        margin-bottom: var(--spacing-2xl);
-      }
-
-      .wine-actions {
-        flex-direction: column;
-        align-items: stretch;
-      }
-
-      .btn-download {
-        width: 100%;
-        justify-content: center;
-      }
-
-      .back-btn {
-        width: 36px;
-        height: 36px;
-      }
-
-      .back-arrow {
-        font-size: var(--font-size-lg);
-      }
+      .wine-container { padding: var(--spacing-2xl) var(--spacing-md); }
+      .wine-actions { flex-direction: column; align-items: stretch; }
+      .btn-download { width: 100%; justify-content: center; }
+      .back-btn { width: 36px; height: 36px; }
+      .back-arrow { font-size: var(--font-size-lg); }
     }
   </style>
 </head>
+
 <body>
 
-<!-- HEADER -->
 <header class="topbar">
   <a href="../index.html#vins" class="back-btn" aria-label="Retour aux vins">
     <span class="back-arrow">←</span>
@@ -270,37 +238,35 @@
 <main class="wine-page">
   <div class="wine-container">
     
-    <!-- Wine Header -->
     <div class="wine-header">
       <h1 class="wine-title">Malbec</h1>
       <p class="wine-subtitle">GRAND VIN DE BORDEAUX</p>
     </div>
 
-    <!-- Wine Content -->
     <div class="wine-content">
-      <!-- Wine Image -->
+
       <div class="wine-image-container">
         <img src="../images/wines/malbec-etiquette.jpg" alt="Malbec - Étiquette" class="wine-image">
       </div>
 
-      <!-- Wine Description -->
       <div class="wine-description">
-        <h2>Malbec</h2>
-        <p>
-          Ce vin se caractérise par une jolie robe sombre, accompagnée de reflets violets.
-          Le nez évoque la mûre, la griotte avec une VRAI note épicée.
-          La bouche est savoureuse et gourmande, charnue et tout en fraicheur avec un beau volume et des tanins veloutés et soyeux. 
-          La Finale (fougueuse !) est épicée et poivrée.
-        </p>
-        <p>
+        
+        <div class="wine-title-wrapper">
+          <h2>Malbec</h2>
+          <p class="wine-appellation">Côtes de Bourg – Rouge</p>
+        </div>
 
         <p>
-          <strong>Appellation :</strong> Côtes de Bourg - Rouge
+          Ce vin se caractérise par une jolie robe sombre, accompagnée de reflets violets.
+          Le nez évoque la mûre, la griotte avec une vraie note épicée.
+          La bouche est savoureuse et gourmande, charnue et tout en fraîcheur avec un beau volume 
+          et des tanins veloutés et soyeux.
+          La finale, fougueuse, est épicée et poivrée.
         </p>
+
       </div>
     </div>
 
-    <!-- Wine Actions -->
     <div class="wine-actions">
       <a href="../fiches-techniques/cuvee-grand-cru.pdf" class="btn-download" download>
         Télécharger la fiche technique
@@ -313,7 +279,6 @@
   </div>
 </main>
 
-<!-- FOOTER -->
 <footer class="footer">
   <div class="container">
     <div class="footer-content">
