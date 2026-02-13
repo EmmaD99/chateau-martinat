@@ -36,8 +36,14 @@
   position: relative;
   overflow: hidden;
   aspect-ratio: 3/4;
-  background: var(--background-dark);
+
+  /* Fond bois */
+  background-image: url('../../images/general/bois.jpeg'); /* <-- mettez le chemin exact de votre image */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
+
 
 .wine-figure img {
   width: 100%;
