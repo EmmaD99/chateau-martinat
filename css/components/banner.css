@@ -1,0 +1,149 @@
+/* ========================================
+   BANNIÈRE TOURNANTE PROFESSIONNELLE
+   ======================================== */
+
+/* Bannière en bas de l'image */
+.image-banner {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: linear-gradient(90deg, rgba(105, 28, 51, 0.9) 0%, rgba(139, 46, 77, 0.9) 50%, rgba(105, 28, 51, 0.9) 100%);
+  padding: 0.75rem 0;
+  overflow: hidden;
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+  backdrop-filter: blur(5px);
+}
+
+/* Alternative avec fond doré/accent */
+.image-banner.gold {
+  background: linear-gradient(90deg, rgba(184, 134, 11, 0.9) 0%, rgba(218, 165, 32, 0.9) 50%, rgba(184, 134, 11, 0.9) 100%);
+}
+
+/* Container du contenu défilant */
+.banner-content {
+  display: flex;
+  width: max-content;
+  animation: scroll-banner 30s linear infinite;
+  gap: 3rem;
+}
+
+/* Texte de la bannière */
+.banner-text {
+  display: inline-flex;
+  align-items: center;
+  white-space: nowrap;
+  font-family: var(--font-primary);
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #ffffff;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  padding: 0 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+/* Animation de défilement */
+@keyframes scroll-banner {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+/* Pause au survol pour permettre la lecture */
+.banner-content:hover {
+  animation-play-state: paused;
+}
+
+/* Effet de brillance sur la bannière */
+.image-banner::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, 
+    transparent 0%, 
+    rgba(255, 255, 255, 0.2) 50%, 
+    transparent 100%
+  );
+  animation: shine 3s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -100%;
+  }
+  50%, 100% {
+    left: 100%;
+  }
+}
+
+/* Responsive - Mobile */
+@media (max-width: 768px) {
+  .banner-text {
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+    padding: 0 1rem;
+  }
+  
+  .banner-content {
+    gap: 2rem;
+    animation-duration: 20s;
+  }
+  
+  .image-banner {
+    padding: 0.6rem 0;
+  }
+}
+
+@media (max-width: 480px) {
+  .banner-text {
+    font-size: 0.7rem;
+  }
+  
+  .banner-content {
+    gap: 1.5rem;
+  }
+}
+
+/* Variantes de style */
+
+/* Variante avec bordure dorée */
+.image-banner.bordered {
+  border-top: 3px solid #daa520;
+  border-bottom: 3px solid #daa520;
+}
+
+/* Variante avec motif de fond */
+.image-banner.pattern {
+  background: 
+    linear-gradient(90deg, #691C33 0%, #8B2E4D 50%, #691C33 100%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 10px,
+      rgba(255, 255, 255, 0.03) 10px,
+      rgba(255, 255, 255, 0.03) 20px
+    );
+}
+
+/* Variante élégante avec ombre intérieure */
+.image-banner.elegant {
+  box-shadow: 
+    0 -4px 20px rgba(0, 0, 0, 0.3),
+    inset 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Pour la section propriété aussi */
+.property-image {
+  position: relative;
+  overflow: hidden;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-lg);
+}
